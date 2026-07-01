@@ -1,10 +1,11 @@
 OBJ=build/main.o
 
-CFLAGS=-Wall -Wextra
+CFLAGS=-Wall -Wextra -Ivendor/raylib/src
+LDFLAGS=-Lbuild/ -lraylib -framework Cocoa -framework OpenGL -framework IOKit
 
 all: PomodoroTimer
 
-PomodoroTimer: $(OBJ)
+PomodoroTimer: $(OBJ) build/libraylib.a
 	$(CC) $(LDFLAGS) -o $@ $^
 
 build/%.o: src/%.c
