@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <time.h>
 
 #include <raylib.h>
 #include <raygui.h>
@@ -15,10 +18,23 @@ int main(int argc, char **argv)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Pomodoro Timer");
     SetTargetFPS(60);
 
-    size_t minute_count = 5;
-    size_t seconds_count = 0;
+    ssize_t minute_count = 1;
+    ssize_t seconds_count = 0;
 
+    float elapsed_time = 0;
     while (!WindowShouldClose()) {
+        elapsed_time += GetFrameTime();
+        if (elapsed_time > 1.0f) {
+            seconds_count--;
+
+            if (seconds_count < 0) {
+                minute_count--;
+                seconds_count = 59;
+            }
+
+            elapsed_time = 0.0f;
+        }
+
         BeginDrawing();
         ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
 
