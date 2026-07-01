@@ -18,8 +18,9 @@ int main(int argc, char **argv)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Pomodoro Timer");
     SetTargetFPS(60);
 
-    ssize_t minute_count = 1;
-    ssize_t seconds_count = 0;
+    bool is_resting = false;
+    ssize_t minute_count = 0;
+    ssize_t seconds_count = 3;
 
     float elapsed_time = 0;
     while (!WindowShouldClose()) {
@@ -32,11 +33,27 @@ int main(int argc, char **argv)
                 seconds_count = 59;
             }
 
+            if (minute_count < 0) {
+                if (is_resting == true) {
+                    is_resting = false;
+                    minute_count = 25;
+                    seconds_count = 0;
+                } else {
+                    is_resting = true;
+                    minute_count = 5;
+                    seconds_count = 0;
+                }
+            }
+
             elapsed_time = 0.0f;
         }
 
         BeginDrawing();
-        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
+        if (is_resting == true) {
+            ClearBackground(GREEN);
+        } else {
+            ClearBackground(SKYBLUE);
+        }
 
         char line_buffer[64] = {0};
         snprintf(line_buffer, 63, "%zu:%zu", minute_count, seconds_count);
