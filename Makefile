@@ -16,3 +16,9 @@ build/%.o: vendor/raygui/%.c
 
 build/libraylib.a:
 	sh scripts/prepare_raylib.sh
+
+clean:
+	rm build/*.o
+
+cleanall:
+	rm build/*.o build/libraylib.a
