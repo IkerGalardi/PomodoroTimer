@@ -17,6 +17,9 @@ build/%.o: vendor/raygui/%.c
 build/libraylib.a:
 	sh scripts/prepare_raylib.sh
 
+run: PomodoroTimer
+	./PomodoroTimer
+
 clean:
 	rm build/*.o
 
