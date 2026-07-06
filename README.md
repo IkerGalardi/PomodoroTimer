@@ -29,6 +29,7 @@ The application is now in a preliminary state. Even though right now it suits my
 next are some planned features I wan't to add in order to consider the application in version 1.0.0:
 
 - [ ] Progress bar and state text
+- [ ] Add a way to pause and restart the timer
 - [ ] A way to configure it graphically
 - [ ] Proper support for MacOS (icon, persistence)
 - [ ] Proper support for Linux (icon, persistence)
