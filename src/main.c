@@ -31,6 +31,17 @@ float calculate_time_percentage(bool is_resting, ssize_t minute_count, ssize_t s
     return 1.0f - (elapsed_seconds / total_seconds);
 }
 
+void draw_centered_text(char *text, size_t y, size_t font_size)
+{
+    int text_size = MeasureText(text, font_size);
+    float x = (CONFIG_SCREEN_WIDTH - text_size) / 2.0f;
+    DrawText(text,
+             x, y,
+             font_size,
+             CONFIG_TEXT_COLOR);
+
+}
+
 int main(int argc, char **argv)
 {
     (void)argc;
@@ -81,16 +92,8 @@ int main(int argc, char **argv)
 
         char line_buffer[64] = {0};
         snprintf(line_buffer, 63, "%zu:%zu", minute_count, seconds_count);
-
-        int text_size = MeasureText(line_buffer, CONFIG_TIMER_TEXT_SIZE);
-        Vector2 text_position = (Vector2) {
-            (CONFIG_SCREEN_WIDTH - text_size) / 2.0f,
-            (CONFIG_SCREEN_HEIGHT - CONFIG_TIMER_TEXT_SIZE) / 2.0f
-        };
-        DrawText(line_buffer,
-                 text_position.x, text_position.y,
-                 CONFIG_TIMER_TEXT_SIZE,
-                 CONFIG_TEXT_COLOR);
+        float timer_text_y = (CONFIG_SCREEN_HEIGHT - CONFIG_TIMER_TEXT_SIZE) / 2.0f;
+        draw_centered_text(line_buffer, timer_text_y, CONFIG_TIMER_TEXT_SIZE);
 
         float percentage_elapsed = calculate_time_percentage(is_resting,
                                                              minute_count,
@@ -98,6 +101,12 @@ int main(int argc, char **argv)
         DrawRectangle(0, CONFIG_SCREEN_HEIGHT - 160,
                       CONFIG_SCREEN_WIDTH * percentage_elapsed, 20,
                       CONFIG_TEXT_COLOR);
+
+        char *state_text = "WORK";
+        if (is_resting) {
+            state_text = "REST";
+        }
+        draw_centered_text(state_text, 160, 40);
 
         EndDrawing();
     }
