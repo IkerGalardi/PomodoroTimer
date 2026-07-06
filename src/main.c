@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <time.h>
+#include <assert.h>
 
 #include <raylib.h>
 #include <raygui.h>
@@ -15,6 +16,20 @@
 #define CONFIG_WORK_MINUTES 25
 #define CONFIG_REST_MINUTES 5
 #define CONFIG_START_RESTING true
+
+float calculate_time_percentage(bool is_resting, ssize_t minute_count, ssize_t seconds_count)
+{
+    assert((minute_count >= 0));
+    assert((seconds_count >= 0));
+
+    float total_seconds = CONFIG_WORK_MINUTES * 60;
+    if (is_resting) {
+        total_seconds = CONFIG_REST_MINUTES * 60;
+    }
+
+    float elapsed_seconds = minute_count * 60 + seconds_count;
+    return 1.0f - (elapsed_seconds / total_seconds);
+}
 
 int main(int argc, char **argv)
 {
@@ -76,6 +91,13 @@ int main(int argc, char **argv)
                  text_position.x, text_position.y,
                  CONFIG_TIMER_TEXT_SIZE,
                  CONFIG_TEXT_COLOR);
+
+        float percentage_elapsed = calculate_time_percentage(is_resting,
+                                                             minute_count,
+                                                             seconds_count);
+        DrawRectangle(0, CONFIG_SCREEN_HEIGHT - 160,
+                      CONFIG_SCREEN_WIDTH * percentage_elapsed, 20,
+                      CONFIG_TEXT_COLOR);
 
         EndDrawing();
     }
