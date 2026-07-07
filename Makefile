@@ -28,3 +28,14 @@ cleanall:
 	rm build/*.o build/*.d build/libraylib.a
 
 -include $(DEP)
+
+install_macos: PomodoroTimer
+	rm -rf $(HOME)/Applications/PomodoroTimer.app
+	mkdir -p $(HOME)/Applications/PomodoroTimer.app
+	mkdir -p $(HOME)/Applications/PomodoroTimer.app/Contents
+	mkdir -p $(HOME)/Applications/PomodoroTimer.app/Contents/MacOS
+	mkdir -p $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
+	cp res/Info.plist $(HOME)/Applications/PomodoroTimer.app/Contents/
+	cp PomodoroTimer $(HOME)/Applications/PomodoroTimer.app/Contents/MacOS
+	cp res/ring.mp3 $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
+	cp res/noise.mp3 $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
