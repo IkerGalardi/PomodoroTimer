@@ -63,11 +63,11 @@ int main(int argc, char **argv)
             if (minute_count < 0) {
                 if (is_resting == true) {
                     is_resting = false;
-                    minute_count = 25;
+                    minute_count = CONFIG_WORK_MINUTES;
                     seconds_count = 0;
                 } else {
                     is_resting = true;
-                    minute_count = 5;
+                    minute_count = CONFIG_REST_MINUTES;
                     seconds_count = 0;
                 }
             }
