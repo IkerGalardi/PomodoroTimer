@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <assert.h>
+#include <stdlib.h>
 
 #include <raylib.h>
 #include <raygui.h>
@@ -39,6 +40,18 @@ int main(int argc, char **argv)
     (void)argc;
     (void)argv;
 
+    InitAudioDevice();
+    if (!IsAudioDeviceReady()) {
+        fprintf(stderr, "ERROR: could not initialize the audio system\n");
+        exit(EXIT_FAILURE);
+    }
+
+    Sound ring_sound = LoadSound(CONFIG_RING_SOUND_PATH);
+    if (!IsSoundValid(ring_sound)) {
+        fprintf(stderr, "ERROR: could not load ring sound (path: \"%s\"\n", CONFIG_RING_SOUND_PATH);
+        exit(EXIT_FAILURE);
+    }
+
     InitWindow(CONFIG_SCREEN_WIDTH, CONFIG_SCREEN_HEIGHT, "Pomodoro Timer");
     SetTargetFPS(60);
 
@@ -70,6 +83,8 @@ int main(int argc, char **argv)
                     minute_count = CONFIG_REST_MINUTES;
                     seconds_count = 0;
                 }
+
+                PlaySound(ring_sound);
             }
 
             elapsed_time = 0.0f;
@@ -103,5 +118,7 @@ int main(int argc, char **argv)
         EndDrawing();
     }
 
+
     CloseWindow();
+    CloseAudioDevice();
 }

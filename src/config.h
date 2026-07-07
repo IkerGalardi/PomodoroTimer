@@ -14,4 +14,6 @@
 #define CONFIG_REST_MINUTES 5
 #define CONFIG_START_RESTING true
 
+#define CONFIG_RING_SOUND_PATH "res/ring.mp3"
+
 #endif // CONFIG_H
