@@ -14,7 +14,7 @@
 #define CONFIG_REST_MINUTES 5
 #define CONFIG_START_RESTING true
 
-#define CONFIG_RING_SOUND_PATH "res/ring.mp3"
-#define CONFIG_NOISE_SOUND_PATH "res/noise.mp3"
+#define CONFIG_RING_SOUND_PATH "ring.mp3"
+#define CONFIG_NOISE_SOUND_PATH "noise.mp3"
 
 #endif // CONFIG_H

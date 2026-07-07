@@ -35,10 +35,28 @@ void draw_centered_text(char *text, size_t y, size_t font_size)
 
 }
 
+void change_to_resource_directory_or_abort()
+{
+    ChangeDirectory(GetApplicationDirectory());
+
+    if (ChangeDirectory("res") == true) {
+        return;
+    }
+
+    // TODO: detect if its MacOS. Linux might have a different structure.
+    if (ChangeDirectory("../Resources") == true) {
+        return;
+    }
+
+    abort();
+}
+
 int main(int argc, char **argv)
 {
     (void)argc;
     (void)argv;
+
+    change_to_resource_directory_or_abort();
 
     InitAudioDevice();
     if (!IsAudioDeviceReady()) {
