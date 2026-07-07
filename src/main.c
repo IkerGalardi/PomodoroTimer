@@ -51,6 +51,11 @@ int main(int argc, char **argv)
         fprintf(stderr, "ERROR: could not load ring sound (path: \"%s\"\n", CONFIG_RING_SOUND_PATH);
         exit(EXIT_FAILURE);
     }
+    Sound noise_sound = LoadSound(CONFIG_NOISE_SOUND_PATH);
+    if (!IsSoundValid(noise_sound)) {
+        fprintf(stderr, "ERROR: could not load ring sound (path: \"%s\"\n", CONFIG_NOISE_SOUND_PATH);
+        exit(EXIT_FAILURE);
+    }
 
     InitWindow(CONFIG_SCREEN_WIDTH, CONFIG_SCREEN_HEIGHT, "Pomodoro Timer");
     SetTargetFPS(60);
@@ -61,6 +66,8 @@ int main(int argc, char **argv)
     if (is_resting == true) {
         minute_count = CONFIG_REST_MINUTES;
     }
+
+    PlaySound(noise_sound);
 
     float elapsed_time = 0;
     while (!WindowShouldClose()) {
@@ -116,6 +123,10 @@ int main(int argc, char **argv)
         draw_centered_text(state_text, 160, CONFIG_STATE_TEXT_SIZE);
 
         EndDrawing();
+
+        if (!IsSoundPlaying(noise_sound)) {
+            PlaySound(noise_sound);
+        }
     }
 
 
