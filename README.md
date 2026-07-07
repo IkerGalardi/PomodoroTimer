@@ -28,7 +28,9 @@ configured at compile time. That's it!
 The application is now in a preliminary state. Even though right now it suits my basic needs, the
 next are some planned features I wan't to add in order to consider the application in version 1.0.0:
 
-- [ ] Progress bar and state text
+- [X] Progress bar and state text
+- [ ] Sounds when changing states
+- [ ] Background white noise
 - [ ] Add a way to pause and restart the timer
 - [ ] A way to configure it graphically
 - [ ] Proper support for MacOS (icon, persistence)
