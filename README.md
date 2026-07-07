@@ -29,15 +29,14 @@ The application is now in a preliminary state. Even though right now it suits my
 next are some planned features I wan't to add in order to consider the application in version 1.0.0:
 
 - [X] Progress bar and state text
-- [ ] Sounds when changing states
-- [ ] Background white noise
+- [X] Sounds when changing states
+- [X] Background white noise
 - [ ] Add a way to pause and restart the timer
 - [ ] A way to configure it graphically
 - [ ] Proper support for MacOS (icon, persistence)
 - [ ] Proper support for Linux (icon, persistence)
 
 The next are the supported (and planned) platforms:
-- [ ] MacOS (x86)
 - [X] MacOS (ARM64)
 - [ ] Linux (ARM64)
 - [ ] Linux (x86)
