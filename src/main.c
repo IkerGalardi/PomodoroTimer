@@ -7,15 +7,7 @@
 #include <raylib.h>
 #include <raygui.h>
 
-#define CONFIG_SCREEN_WIDTH 800
-#define CONFIG_SCREEN_HEIGHT 800
-#define CONFIG_TIMER_TEXT_SIZE 160
-#define CONFIG_TEXT_COLOR BLACK
-#define CONFIG_WORK_BACKGROUND_COLOR SKYBLUE
-#define CONFIG_REST_BACKGROUND_COLOR GREEN
-#define CONFIG_WORK_MINUTES 25
-#define CONFIG_REST_MINUTES 5
-#define CONFIG_START_RESTING true
+#include "config.h"
 
 float calculate_time_percentage(bool is_resting, ssize_t minute_count, ssize_t seconds_count)
 {
@@ -106,7 +98,7 @@ int main(int argc, char **argv)
         if (is_resting) {
             state_text = "REST";
         }
-        draw_centered_text(state_text, 160, 40);
+        draw_centered_text(state_text, 160, CONFIG_STATE_TEXT_SIZE);
 
         EndDrawing();
     }
