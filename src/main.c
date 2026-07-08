@@ -91,7 +91,13 @@ int main(int argc, char **argv)
     bool paused = false;
     while (!WindowShouldClose()) {
         if (IsKeyPressed(KEY_SPACE)) {
-            paused = !paused;
+            if (paused == true) {
+                paused = false;
+                PlaySound(noise_sound);
+            } else {
+                paused = true;
+                StopSound(noise_sound);
+            }
         }
 
         if (!paused) {
@@ -157,7 +163,7 @@ int main(int argc, char **argv)
 
         EndDrawing();
 
-        if (!IsSoundPlaying(noise_sound)) {
+        if (!IsSoundPlaying(noise_sound) && paused == false) {
             PlaySound(noise_sound);
         }
     }
