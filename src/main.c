@@ -85,10 +85,12 @@ int main(int argc, char **argv)
         minute_count = CONFIG_REST_MINUTES;
     }
 
-    PlaySound(noise_sound);
+    if (CONFIG_START_PAUSED == false) {
+        PlaySound(noise_sound);
+    }
 
     float elapsed_time = 0;
-    bool paused = false;
+    bool paused = CONFIG_START_PAUSED;
     while (!WindowShouldClose()) {
         if (IsKeyPressed(KEY_SPACE)) {
             if (paused == true) {
