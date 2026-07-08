@@ -1,7 +1,7 @@
 OBJ=build/main.o build/raygui.o
 DEP=build/main.d build/raygui.d
 
-CFLAGS=-Wall -Wextra -Ivendor/raylib/src -Ivendor/raygui/ -MMD
+CFLAGS=-Wall -Wextra -Ivendor/raylib/src -Ivendor/raygui/ -MMD -O2
 LDFLAGS=-Lbuild/ -lraylib -framework Cocoa -framework OpenGL -framework IOKit
 
 all: PomodoroTimer
