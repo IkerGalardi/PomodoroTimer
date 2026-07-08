@@ -12,6 +12,8 @@
     <string>com.ikergalardi.PomodoroTimer</string>
     <key>CFBundleExecutable</key>
     <string>PomodoroTimer</string>
+    <key>CFBundleIconFile</key>
+    <string>icon.icns</string>
     <key>CFBundleDisplayName</key>
     <string>Pomodoro Timer</string>
     <key>CFBundleName</key>

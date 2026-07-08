@@ -1,4 +1,5 @@
 build/*.o
 build/*.d
 build/*.a
+icon.icns
 PomodoroTimer

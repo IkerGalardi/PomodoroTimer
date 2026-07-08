@@ -29,7 +29,10 @@ cleanall:
 
 -include $(DEP)
 
-install_macos: PomodoroTimer
+icon.icns: res/icon.png
+	vendor/png_to_icns/png_to_icns.sh -i res/icon.png
+
+install_macos: PomodoroTimer icon.icns
 	rm -rf $(HOME)/Applications/PomodoroTimer.app
 	mkdir -p $(HOME)/Applications/PomodoroTimer.app
 	mkdir -p $(HOME)/Applications/PomodoroTimer.app/Contents
@@ -39,3 +42,4 @@ install_macos: PomodoroTimer
 	cp PomodoroTimer $(HOME)/Applications/PomodoroTimer.app/Contents/MacOS
 	cp res/ring.mp3 $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
 	cp res/noise.mp3 $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
+	cp icon.icns $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
