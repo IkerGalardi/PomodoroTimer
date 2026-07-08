@@ -31,9 +31,9 @@ next are some planned features I wan't to add in order to consider the applicati
 - [X] Progress bar and state text
 - [X] Sounds when changing states
 - [X] Background white noise
-- [ ] Add a way to pause and restart the timer
+- [X] Add a way to pause and restart the timer
 - [ ] A way to configure it graphically
-- [ ] Proper support for MacOS (icon, persistence)
+- [X] Proper support for MacOS (icon, persistence)
 - [ ] Proper support for Linux (icon, persistence)
 
 The next are the supported (and planned) platforms:
