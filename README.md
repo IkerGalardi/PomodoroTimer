@@ -35,12 +35,12 @@ next are some planned features I wan't to add in order to consider the applicati
 - [X] Add a way to pause and restart the timer
 - [ ] A way to configure it graphically
 - [X] Proper support for MacOS (icon, persistence)
-- [ ] Proper support for Linux (icon, persistence)
+- [X] Proper support for Linux (icon, persistence)
 
 The next are the supported (and planned) platforms:
 - [X] MacOS (ARM64)
 - [ ] Linux (ARM64)
-- [ ] Linux (x86)
+- [X] Linux (x86)
 
 The windows platform support is not planned, as I dont have any windows machine laying around in
 order to properly support and test the application, although PR related to the platform are
