@@ -1,4 +1,5 @@
 <h1 align="center">PomodoroTimer</h1>
+<div align="center"><img src="https://github.com/IkerGalardi/PomodoroTimer/blob/main/res/icon.png?raw=true" width=128 heigh=128></div>
 <p align="center">A simple configurable pomodoro timer application</p>
 
 ## Getting started
