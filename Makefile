@@ -1,13 +1,23 @@
+OS=$(shell uname)
+
 OBJ=build/main.o build/raygui.o
 DEP=build/main.d build/raygui.d
 
 CFLAGS=-Wall -Wextra -Ivendor/raylib/src -Ivendor/raygui/ -MMD -O2
-LDFLAGS=-Lbuild/ -lraylib -framework Cocoa -framework OpenGL -framework IOKit
+LDFLAGS=-Lbuild/ -lraylib
+
+ifeq ($(OS),Darwin)
+	include macos.mk
+endif
+
+ifeq ($(OS),Linux)
+	include linux.mk
+endif
 
 all: PomodoroTimer
 
 PomodoroTimer: $(OBJ) build/libraylib.a
-	$(CC) $(LDFLAGS) -o $@ $<
+	$(CC) -o $@ $< $(LDFLAGS)
 
 build/%.o: src/%.c
 	$(CC) -c $(CFLAGS) -o $@ $<
