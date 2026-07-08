@@ -39,11 +39,16 @@ void change_to_resource_directory_or_abort()
 {
     ChangeDirectory(GetApplicationDirectory());
 
+    FILE *icon_file = fopen("icon.png", "r");
+    if (icon_file != NULL) {
+        fclose(icon_file);
+        return;
+    }
+
     if (ChangeDirectory("res") == true) {
         return;
     }
 
-    // TODO: detect if its MacOS. Linux might have a different structure.
     if (ChangeDirectory("../Resources") == true) {
         return;
     }
