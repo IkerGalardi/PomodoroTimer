@@ -88,31 +88,38 @@ int main(int argc, char **argv)
     PlaySound(noise_sound);
 
     float elapsed_time = 0;
+    bool paused = false;
     while (!WindowShouldClose()) {
-        elapsed_time += GetFrameTime();
-        if (elapsed_time > 1.0f) {
-            seconds_count--;
+        if (IsKeyPressed(KEY_SPACE)) {
+            paused = !paused;
+        }
 
-            if (seconds_count < 0) {
-                minute_count--;
-                seconds_count = 59;
-            }
+        if (!paused) {
+            elapsed_time += GetFrameTime();
+            if (elapsed_time > 1.0f) {
+                seconds_count--;
 
-            if (minute_count < 0) {
-                if (is_resting == true) {
-                    is_resting = false;
-                    minute_count = CONFIG_WORK_MINUTES;
-                    seconds_count = 0;
-                } else {
-                    is_resting = true;
-                    minute_count = CONFIG_REST_MINUTES;
-                    seconds_count = 0;
+                if (seconds_count < 0) {
+                    minute_count--;
+                    seconds_count = 59;
                 }
 
-                PlaySound(ring_sound);
-            }
+                if (minute_count < 0) {
+                    if (is_resting == true) {
+                        is_resting = false;
+                        minute_count = CONFIG_WORK_MINUTES;
+                        seconds_count = 0;
+                    } else {
+                        is_resting = true;
+                        minute_count = CONFIG_REST_MINUTES;
+                        seconds_count = 0;
+                    }
 
-            elapsed_time = 0.0f;
+                    PlaySound(ring_sound);
+                }
+
+                elapsed_time = 0.0f;
+            }
         }
 
         BeginDrawing();
