@@ -124,9 +124,17 @@ int main(int argc, char **argv)
 
         BeginDrawing();
         if (is_resting == true) {
-            ClearBackground(CONFIG_REST_BACKGROUND_COLOR);
+            if (paused) {
+                ClearBackground(CONFIG_REST_BACKGROUND_COLOR_PAUSED);
+            } else {
+                ClearBackground(CONFIG_REST_BACKGROUND_COLOR);
+            }
         } else {
-            ClearBackground(CONFIG_WORK_BACKGROUND_COLOR);
+            if (paused) {
+                ClearBackground(CONFIG_WORK_BACKGROUND_COLOR_PAUSED);
+            } else {
+                ClearBackground(CONFIG_WORK_BACKGROUND_COLOR);
+            }
         }
 
         char line_buffer[64] = {0};
