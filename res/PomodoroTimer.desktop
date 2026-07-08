@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PomodoroTimer
+Comment=Simple pomodoro timer application
+Exec=/opt/PomodoroTimer/PomodoroTimer
+Icon=/opt/PomodoroTimer/icon.png
+Type=Application
+Terminal=false

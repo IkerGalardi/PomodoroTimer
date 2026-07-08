@@ -53,3 +53,12 @@ install_macos: PomodoroTimer icon.icns
 	cp res/ring.mp3 $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
 	cp res/noise.mp3 $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
 	cp icon.icns $(HOME)/Applications/PomodoroTimer.app/Contents/Resources
+
+install_linux: PomodoroTimer
+	rm -rf /opt/PomodoroTimer
+	mkdir /opt/PomodoroTimer/
+	cp PomodoroTimer /opt/PomodoroTimer/
+	cp res/ring.mp3 /opt/PomodoroTimer/
+	cp res/noise.mp3 /opt/PomodoroTimer/
+	cp res/icon.png /opt/PomodoroTimer/
+	cp res/PomodoroTimer.desktop /usr/share/applications/
